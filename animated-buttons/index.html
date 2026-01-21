@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Buttons - Design Playground</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #4facfe;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .button-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            justify-items: center;
+        }
+
+        /* Button 1: Slide Background */
+        .btn-slide {
+            position: relative;
+            padding: 15px 40px;
+            border: 2px solid #fff;
+            background: transparent;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            overflow: hidden;
+            transition: color 0.3s ease;
+            border-radius: 50px;
+        }
+
+        .btn-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: white;
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-slide:hover::before {
+            left: 0;
+        }
+
+        .btn-slide:hover {
+            color: #1e3c72;
+        }
+
+        /* Button 2: Bounce */
+        .btn-bounce {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-bounce:hover {
+            animation: bounce 0.6s ease;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            25% { transform: translateY(-10px); }
+            50% { transform: translateY(0); }
+            75% { transform: translateY(-5px); }
+        }
+
+        /* Button 3: Glow */
+        .btn-glow {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .btn-glow:hover {
+            box-shadow: 0 0 20px rgba(240, 147, 251, 0.8),
+                        0 0 40px rgba(245, 87, 108, 0.6);
+        }
+
+        /* Button 4: Fill Up */
+        .btn-fill {
+            position: relative;
+            padding: 15px 40px;
+            background: transparent;
+            color: white;
+            border: 2px solid #4facfe;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 50px;
+            overflow: hidden;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .btn-fill::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            transition: height 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-fill:hover::after {
+            height: 100%;
+        }
+
+        .btn-fill:hover {
+            border-color: #00f2fe;
+        }
+
+        /* Button 5: Shake */
+        .btn-shake {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 50px;
+        }
+
+        .btn-shake:hover {
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+
+        /* Button 6: Rotate */
+        .btn-rotate {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-rotate:hover {
+            transform: rotate(5deg) scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .button-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../" class="back-link">← Back to Playground</a>
+            <h1>Animated Buttons</h1>
+            <p style="color: #ccc; margin-top: 10px;">Interactive button designs with CSS animations</p>
+        </div>
+
+        <div class="button-section">
+            <h2 class="section-title">Hover Over These Buttons</h2>
+            <div class="button-grid">
+                <button class="btn-slide">Slide Background</button>
+                <button class="btn-bounce">Bounce Effect</button>
+                <button class="btn-glow">Glow Effect</button>
+                <button class="btn-fill">Fill Up</button>
+                <button class="btn-shake">Shake It</button>
+                <button class="btn-rotate">Rotate & Scale</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
