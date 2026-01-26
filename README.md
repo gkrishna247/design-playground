@@ -1,91 +1,92 @@
-# 🎨 Design Playground
+# Design Playground 🎨
 
-A curated collection of web design experiments, micro-interactions, and visual layouts. This repository serves as a personal laboratory for exploring modern web aesthetics, animations, and CSS techniques.
+A curated collection of creative design experiments, UI components, and visual explorations. This repository serves as a sandbox for experimenting with modern CSS techniques, animations, and UI patterns.
 
-## 📁 Current Project State
-
-This repository has been reset to a clean slate, ready for fresh design experiments.
+## Repository Structure
 
 ```
 design-playground/
-├── LICENSE             # Project license
-└── README.md           # Documentation and guides
+├── index.html          # Gateway page listing all design experiments
+├── README.md           # This documentation file
+├── agents.md           # Agent configuration and usage patterns
+├── LICENSE
+└── <design-folders>/   # Individual design experiment folders
 ```
 
-## 🚀 Getting Started
+## Adding New Designs
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/gkrishna247/design-playground.git
-cd design-playground
+### Folder Format Structure
+
+Each design experiment must follow this structure:
+
+```
+<design-name>/
+├── index.html          # Main entry point (required)
+├── README.md           # Design documentation (required)
+├── style.css           # Styles (optional, can be inline)
+├── script.js           # Scripts (optional, can be inline)
+└── assets/             # Images, fonts, etc. (optional)
 ```
 
-### 2. Prepare the Root
-Since the playground is currently empty, your first step should be creating a root `index.html` to act as your navigation hub. You can use the template below:
+### Naming Convention
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design Playground</title>
-    <style>
-        body { font-family: system-ui; text-align: center; padding: 50px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    </style>
-</head>
-<body>
-    <h1>My Design Playground</h1>
-    <div class="grid" id="design-grid">
-        <!-- New designs will be added here -->
-    </div>
-</body>
-</html>
+- Use **kebab-case** for folder names based on the design name
+- Examples: `gradient-cards`, `glassmorphism-button`, `animated-navbar`
+- Keep names descriptive but concise
+
+### Required Files
+
+| File | Description |
+|------|-------------|
+| `index.html` | The main HTML file that renders the design |
+| `README.md` | Documentation describing the design, techniques used, and any notes |
+
+### Registering a New Design
+
+To add your design to the gateway page, update the `designs` array in `index.html`:
+
+```javascript
+const designs = [
+    // ... existing designs ...
+    {
+        name: "Your Design Name",
+        description: "Brief description of what the design demonstrates",
+        techStack: ["HTML", "CSS", "JavaScript"],  // Technologies used
+        folderPath: "./your-design-folder/"
+    }
+];
 ```
 
-### 3. Local Preview
-Use a local server to view your progress:
-```bash
-# Using Python
-python -m http.server 8000
-```
-Then visit `http://localhost:8000`.
+### Design Entry Template
 
-## ➕ Adding a New Design
-
-Follow these steps to add a new experiment:
-
-### 1. Create a Folder
-Create a new folder for your design (use lowercase-hyphens):
-```bash
-mkdir my-new-design
+```javascript
+{
+    name: "",           // Display name for the card
+    description: "",    // 1-2 sentence description
+    techStack: [],      // Array of technology names as strings
+    folderPath: ""      // Relative path to the design folder (include trailing /)
+}
 ```
 
-### 2. Create index.html
-Inside the folder, create your design's entry point. Ensure you include a "Back to Playground" link:
-```html
-<a href="../">← Back to Playground</a>
-```
+## Design Guidelines
 
-### 3. Register the Design
-Update your root `index.html` to include a link to your new folder.
+1. **Self-Contained**: Each design should work independently
+2. **No External Dependencies**: Prefer inline styles/scripts or local files
+3. **Responsive**: Designs should work across different screen sizes
+4. **Documented**: Include a README explaining the techniques used
+5. **Clean Code**: Well-commented, organized code for learning purposes
 
-## 💡 Design Principles
+## Gateway Features
 
-- **Framework-Free**: Aim for Vanilla HTML/CSS/JS where possible.
-- **Micro-Interactions**: Focus on the small details—hover states, transitions, and polish.
-- **Responsiveness**: Ensure designs look stunning on all devices.
-- **Self-Contained**: Keep each experiment within its own directory.
+The main `index.html` gateway provides:
 
-## 🎯 Inspiration & Ideas
+- 🌈 Animated gradient background
+- 🪟 Glassmorphism-styled design cards
+- ✨ Smooth hover animations and entrance effects
+- 🔍 Filter designs by technology stack
+- 📱 Fully responsive grid layout
+- 🌙 Dark theme with vibrant accents
 
-- **Glassmorphism** layouts
-- **Neumorphic** UI elements
-- **Parallax** scrolling effects
-- **Advanced CSS** Grid/Flexbox patterns
-- **SVG Animations** and filters
+## License
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is open source and available under the [MIT License](LICENSE).
