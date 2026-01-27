@@ -39,6 +39,14 @@
             techStack: ['HTML', 'CSS'],
             folderPath: './glassmorphism-ui/',
             accentHue: 200
+        },
+        {
+            id: '3d-parallax-portfolio',
+            name: '3D Parallax Portfolio',
+            description: 'Immersive 3D parallax portfolio with depth-based scroll navigation, animated neural network canvas, and glassmorphism cards with 3D tilt effects.',
+            techStack: ['HTML', 'CSS', 'JavaScript', 'Canvas API'],
+            folderPath: './3d-parallax-portfolio/',
+            accentHue: 188
         }
     ];
 
