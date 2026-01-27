@@ -6,49 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Design Playground - A collection of creative design experiments and UI components">
-    <title>Design Playground | Creative Experiments</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Design Playground | Neural Flux</title>
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
 <body>
-    <!-- Animated Background -->
+    <!-- ATMOSPHERE LAYERS -->
     <div class="bg-gradient"></div>
+    <div class="noise-overlay"></div>
+    <div class="cursor-spotlight"></div>
 
-    <!-- Floating Shapes -->
-    <div class="floating-shapes">
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
+    <!-- Floating Orbs -->
+    <div class="orb orb--1"></div>
+    <div class="orb orb--2"></div>
+    <div class="orb orb--3"></div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="header__title animate-gradient-text">Design Playground</h1>
+            <p class="header__subtitle">A curated collection of visually immersive experiments and UI components.</p>
+        </header>
+
+        <!-- Controls -->
+        <nav class="filter-bar" id="filterBar" role="tablist" aria-label="Filter designs">
+            <!-- Injected by JS -->
+            <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true"
+                aria-controls="gallery">All</button>
+        </nav>
+
+        <!-- Gallery Grid -->
+        <main class="gallery-grid" id="gallery" role="tabpanel" aria-live="polite">
+            <!-- Injected by JS -->
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Design Playground &copy; 2026 | <a href="https://github.com/gkrishna247/design-playground"
+                    target="_blank" style="text-decoration: underline;">GitHub Repository</a></p>
+        </footer>
     </div>
 
-    <!-- Header -->
-    <header class="header">
-        <h1>Design Playground</h1>
-        <p>A curated collection of creative design experiments, UI components, and visual explorations. Click any card
-            to explore.</p>
-    </header>
-
-    <!-- Filter Bar -->
-    <div class="filter-bar" id="filterBar">
-        <button class="filter-btn active" data-filter="all">All</button>
-    </div>
-
-    <!-- Cards Container -->
-    <main class="container">
-        <div class="cards-grid" id="cardsGrid">
-            <!-- Cards rendered dynamically by JavaScript -->
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p>Design Playground &copy; 2026 | <a href="https://github.com/gkrishna247/design-playground"
-                target="_blank">GitHub Repository</a></p>
-    </footer>
-
-    <script src="script.js"></script>
+    <!-- LOGIC (Loaded sequentially for file:// compatibility) -->
+    <script src="assets/js/modules/designs.js"></script>
+    <script src="assets/js/state/AppState.js"></script>
+    <script src="assets/js/modules/DesignCard.js"></script>
+    <script src="assets/js/modules/FilterBar.js"></script>
+    <script src="assets/js/modules/GalleryController.js"></script>
+    <script src="assets/js/modules/CursorSpotlight.js"></script>
+    <script src="assets/js/modules/CardTilt.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>
