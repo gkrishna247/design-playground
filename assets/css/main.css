@@ -1,0 +1,22 @@
+/* ============================================
+   MAIN CSS - main.css
+   Imports all CSS modules in correct order
+   ============================================ */
+
+/* Design Tokens (must be first) */
+@import 'modules/variables.css';
+
+/* Reset Styles */
+@import 'modules/reset.css';
+
+/* Layout System */
+@import 'modules/layout.css';
+
+/* Background Effects */
+@import 'modules/background.css';
+
+/* Animations & Keyframes */
+@import 'modules/animations.css';
+
+/* UI Components (should be last) */
+@import 'modules/components.css';

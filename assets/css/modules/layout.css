@@ -1,0 +1,109 @@
+/* ============================================
+   LAYOUT SYSTEM - layout.css
+   Container, Grid, and Flexbox utilities
+   ============================================ */
+
+/* ===================
+   CONTAINER
+   =================== */
+
+.container {
+    width: min(90%, var(--container-max-width));
+    margin-inline: auto;
+    padding: var(--space-4) var(--container-padding);
+}
+
+/* ===================
+   HERO SECTION
+   =================== */
+
+.hero {
+    text-align: center;
+    padding: var(--space-8) 0 var(--space-6);
+}
+
+.hero-title {
+    font-size: var(--font-size-hero);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-2);
+    background: linear-gradient(135deg,
+            var(--color-text-primary) 0%,
+            var(--color-accent) 50%,
+            var(--color-text-primary) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: var(--font-size-h3);
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-normal);
+    max-width: 600px;
+    margin-inline: auto;
+}
+
+/* ===================
+   GALLERY GRID
+   =================== */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--card-min-width), 1fr));
+    gap: var(--card-gap);
+    padding-bottom: var(--space-8);
+}
+
+/* Empty State */
+.gallery:empty::before {
+    content: "No design experiments yet. Check back soon!";
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--space-8);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-h3);
+}
+
+/* ===================
+   FILTER BAR
+   =================== */
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-1);
+    padding: var(--space-3) 0 var(--space-4);
+}
+
+/* ===================
+   RESPONSIVE ADJUSTMENTS
+   =================== */
+
+@media (max-width: 768px) {
+    .hero {
+        padding: var(--space-6) 0 var(--space-4);
+    }
+
+    .gallery {
+        gap: var(--space-3);
+    }
+
+    .filter-bar {
+        gap: var(--space-1);
+        padding: var(--space-2) 0 var(--space-3);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+        padding: var(--space-2) var(--space-1);
+    }
+
+    .hero {
+        padding: var(--space-4) 0 var(--space-3);
+    }
+}

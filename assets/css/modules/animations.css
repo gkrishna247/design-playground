@@ -1,0 +1,215 @@
+/* ============================================
+   ANIMATIONS - animations.css
+   Keyframes, entrance effects, GPU hints
+   ============================================ */
+
+/* ===================
+   GRADIENT ANIMATION
+   =================== */
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    25% {
+        background-position: 50% 100%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    75% {
+        background-position: 50% 0%;
+    }
+}
+
+/* ===================
+   ENTRANCE ANIMATIONS
+   =================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ===================
+   GLOW ANIMATIONS
+   =================== */
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        text-shadow:
+            0 0 10px var(--color-glow),
+            0 0 20px var(--color-glow),
+            0 0 40px hsla(var(--hue-accent), 100%, 60%, 0.4);
+    }
+
+    50% {
+        text-shadow:
+            0 0 15px var(--color-glow),
+            0 0 30px var(--color-glow),
+            0 0 60px hsla(var(--hue-accent), 100%, 60%, 0.6);
+    }
+}
+
+@keyframes borderGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 15px hsla(var(--hue-accent), 80%, 60%, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 25px hsla(var(--hue-accent), 80%, 60%, 0.5);
+    }
+}
+
+/* ===================
+   STAGGERED ENTRANCE
+   =================== */
+
+.design-card {
+    animation: fadeInUp 0.6s var(--transition-smooth) backwards;
+}
+
+.design-card:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.design-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.design-card:nth-child(3) {
+    animation-delay: 0.15s;
+}
+
+.design-card:nth-child(4) {
+    animation-delay: 0.2s;
+}
+
+.design-card:nth-child(5) {
+    animation-delay: 0.25s;
+}
+
+.design-card:nth-child(6) {
+    animation-delay: 0.3s;
+}
+
+.design-card:nth-child(7) {
+    animation-delay: 0.35s;
+}
+
+.design-card:nth-child(8) {
+    animation-delay: 0.4s;
+}
+
+.design-card:nth-child(9) {
+    animation-delay: 0.45s;
+}
+
+.design-card:nth-child(10) {
+    animation-delay: 0.5s;
+}
+
+.design-card:nth-child(11) {
+    animation-delay: 0.55s;
+}
+
+.design-card:nth-child(12) {
+    animation-delay: 0.6s;
+}
+
+/* Hero Animation */
+.hero-title {
+    animation: fadeInUp 0.8s var(--transition-smooth) backwards;
+}
+
+.hero-subtitle {
+    animation: fadeInUp 0.8s var(--transition-smooth) 0.15s backwards;
+}
+
+.filter-bar {
+    animation: fadeIn 0.6s var(--transition-smooth) 0.3s backwards;
+}
+
+/* ===================
+   GPU ACCELERATION
+   =================== */
+
+.design-card,
+.orb,
+.cursor-spotlight,
+.hero-title {
+    will-change: transform;
+}
+
+/* ===================
+   FILTER TRANSITIONS
+   =================== */
+
+.design-card.is-hidden {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+}
+
+.design-card.is-visible {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+/* Transition for filtering */
+.gallery--filtering .design-card {
+    transition:
+        opacity var(--transition-smooth),
+        transform var(--transition-smooth);
+}
