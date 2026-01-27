@@ -25,14 +25,28 @@
 
 /* Decorative line above title */
 .hero::before {
-    content: '✦ ✦ ✦';
+    content: '✦  ✦  ✦';
     display: block;
-    font-size: 1.25rem;
-    letter-spacing: 1rem;
+    font-size: 1.5rem;
+    letter-spacing: 1.5rem;
     color: var(--color-accent);
-    opacity: 0.6;
-    margin-bottom: var(--space-3);
-    animation: fadeIn 1s ease 0.2s backwards;
+    opacity: 0.8;
+    margin-bottom: var(--space-4);
+    animation: starPulse 3s ease-in-out infinite;
+}
+
+@keyframes starPulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
 }
 
 .hero-title {
