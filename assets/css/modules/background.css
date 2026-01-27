@@ -15,13 +15,29 @@
 
     /* Animated Gradient */
     background: linear-gradient(135deg,
-            hsl(260, 30%, 8%) 0%,
-            hsl(280, 35%, 12%) 25%,
-            hsl(260, 25%, 10%) 50%,
-            hsl(240, 30%, 10%) 75%,
-            hsl(260, 30%, 8%) 100%);
+            hsl(260, 35%, 6%) 0%,
+            hsl(280, 40%, 10%) 25%,
+            hsl(260, 30%, 8%) 50%,
+            hsl(240, 35%, 8%) 75%,
+            hsl(260, 35%, 6%) 100%);
     background-size: 400% 400%;
     animation: gradientShift var(--duration-gradient) ease infinite;
+}
+
+/* ===================
+   GRID PATTERN
+   =================== */
+
+.background-layer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(hsla(var(--hue-accent), 50%, 50%, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, hsla(var(--hue-accent), 50%, 50%, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 20%, transparent 70%);
 }
 
 /* ===================
@@ -32,45 +48,57 @@
     position: absolute;
     border-radius: 50%;
     filter: blur(80px);
-    opacity: 0.6;
+    opacity: 0.7;
     pointer-events: none;
     will-change: transform;
 }
 
 /* Orb 1 - Large cyan, top-left */
 .orb-1 {
-    width: 500px;
-    height: 500px;
-    top: -150px;
-    left: -150px;
+    width: 600px;
+    height: 600px;
+    top: -200px;
+    left: -200px;
     background: radial-gradient(circle,
-            hsla(var(--hue-accent), 80%, 50%, 0.4) 0%,
-            hsla(var(--hue-accent), 80%, 50%, 0) 70%);
+            hsla(var(--hue-accent), 85%, 55%, 0.45) 0%,
+            hsla(var(--hue-accent), 85%, 55%, 0) 70%);
     animation: float1 25s ease-in-out infinite;
 }
 
 /* Orb 2 - Medium purple, bottom-right */
 .orb-2 {
-    width: 400px;
-    height: 400px;
-    bottom: -100px;
-    right: -100px;
+    width: 500px;
+    height: 500px;
+    bottom: -150px;
+    right: -150px;
     background: radial-gradient(circle,
-            hsla(var(--hue-primary), 70%, 50%, 0.35) 0%,
-            hsla(var(--hue-primary), 70%, 50%, 0) 70%);
+            hsla(var(--hue-primary), 75%, 55%, 0.4) 0%,
+            hsla(var(--hue-primary), 75%, 55%, 0) 70%);
     animation: float2 30s ease-in-out infinite;
 }
 
 /* Orb 3 - Small pink, center-right */
 .orb-3 {
-    width: 300px;
-    height: 300px;
-    top: 40%;
-    right: 15%;
+    width: 350px;
+    height: 350px;
+    top: 35%;
+    right: 10%;
     background: radial-gradient(circle,
-            hsla(320, 70%, 50%, 0.3) 0%,
-            hsla(320, 70%, 50%, 0) 70%);
+            hsla(320, 75%, 55%, 0.35) 0%,
+            hsla(320, 75%, 55%, 0) 70%);
     animation: float3 20s ease-in-out infinite;
+}
+
+/* Orb 4 - NEW: Blue accent, bottom-left */
+.orb-4 {
+    width: 400px;
+    height: 400px;
+    bottom: 20%;
+    left: -100px;
+    background: radial-gradient(circle,
+            hsla(220, 80%, 60%, 0.3) 0%,
+            hsla(220, 80%, 60%, 0) 70%);
+    animation: float4 28s ease-in-out infinite;
 }
 
 /* ===================
@@ -80,7 +108,7 @@
 .noise-overlay {
     position: absolute;
     inset: 0;
-    opacity: 0.035;
+    opacity: 0.04;
     pointer-events: none;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     background-repeat: repeat;
@@ -136,5 +164,21 @@
 
     50% {
         transform: translate(-40px, 30px) scale(1.1) rotate(10deg);
+    }
+}
+
+@keyframes float4 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    40% {
+        transform: translate(60px, -30px) scale(1.05);
+    }
+
+    80% {
+        transform: translate(20px, 40px) scale(0.95);
     }
 }
