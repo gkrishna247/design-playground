@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Design Playground - A curated collection of creative design experiments, UI components, and visual explorations showcasing modern CSS and JavaScript techniques.">
+    <meta name="keywords" content="CSS, JavaScript, UI Design, Web Experiments, Glassmorphism, Animations">
+    <meta name="author" content="Design Playground">
+    <meta name="theme-color" content="#1a1625">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Design Playground 🎨">
+    <meta property="og:description" content="A curated collection of creative design experiments and UI explorations.">
+    <meta property="og:type" content="website">
+
+    <title>Design Playground 🎨</title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <!-- Preload critical assets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+
+<body>
+    <!-- ========================================
+         BACKGROUND EFFECTS LAYER
+         ======================================== -->
+    <div class="background-layer" aria-hidden="true">
+        <!-- Floating Orbs -->
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="orb orb-4"></div>
+
+        <!-- Noise Texture Overlay -->
+        <div class="noise-overlay"></div>
+    </div>
+
+    <!-- ========================================
+         CURSOR SPOTLIGHT (Desktop only)
+         ======================================== -->
+    <div class="cursor-spotlight" aria-hidden="true"></div>
+
+    <!-- ========================================
+         MAIN CONTENT
+         ======================================== -->
+    <main class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <h1 class="hero-title">Design Playground</h1>
+            <p class="hero-subtitle">A curated collection of creative experiments, UI components, and visual
+                explorations</p>
+        </header>
+
+        <!-- Filter Navigation -->
+        <nav class="filter-bar" aria-label="Filter designs by technology">
+            <!-- Buttons injected by FilterBar.js -->
+        </nav>
+
+        <!-- Design Gallery -->
+        <section class="gallery" aria-label="Design experiments gallery">
+            <!-- Cards injected by GalleryController.js -->
+        </section>
+    </main>
+
+    <!-- ========================================
+         SCRIPTS (Ordered - No ES6 Modules)
+         ======================================== -->
+    <!-- State Management -->
+    <script src="assets/js/state/AppState.js"></script>
+
+    <!-- Data -->
+    <script src="assets/js/modules/designs.js"></script>
+
+    <!-- Components -->
+    <script src="assets/js/modules/DesignCard.js"></script>
+    <script src="assets/js/modules/FilterBar.js"></script>
+    <script src="assets/js/modules/GalleryController.js"></script>
+
+    <!-- Visual Effects -->
+    <script src="assets/js/modules/CursorSpotlight.js"></script>
+    <script src="assets/js/modules/CardTilt.js"></script>
+
+    <!-- Entry Point -->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

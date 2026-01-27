@@ -1,0 +1,334 @@
+/* ============================================
+   COMPONENTS - components.css
+   Cards, buttons, badges, spotlight
+   ============================================ */
+
+/* ===================
+   GLASS CARD
+   =================== */
+
+.design-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-4);
+    background: linear-gradient(135deg,
+            hsla(var(--hue-primary), 40%, 18%, 0.7) 0%,
+            hsla(var(--hue-primary), 35%, 12%, 0.8) 100%);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+    min-height: 220px;
+
+    /* Glassmorphism */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    /* 3D Transform Setup */
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+
+    /* Transitions */
+    transition:
+        transform var(--transition-smooth),
+        border-color var(--transition-fast),
+        box-shadow var(--transition-smooth),
+        background var(--transition-smooth);
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(20px)) {
+    .design-card {
+        background: hsl(var(--hue-primary), 40%, 16%);
+    }
+}
+
+/* Card Hover */
+.design-card:hover {
+    border-color: hsla(var(--hue-accent), 80%, 60%, 0.6);
+    box-shadow:
+        0 0 30px hsla(var(--hue-accent), 80%, 60%, 0.25),
+        0 20px 40px hsla(0, 0%, 0%, 0.3),
+        inset 0 1px 0 hsla(0, 0%, 100%, 0.1);
+    background: linear-gradient(135deg,
+            hsla(var(--hue-primary), 45%, 22%, 0.8) 0%,
+            hsla(var(--hue-primary), 40%, 16%, 0.9) 100%);
+}
+
+/* Card Shine Effect */
+.design-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            hsla(0, 0%, 100%, 0.15) 0%,
+            hsla(0, 0%, 100%, 0.05) 30%,
+            transparent 60%);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    pointer-events: none;
+}
+
+.design-card:hover::before {
+    opacity: 1;
+}
+
+/* Card Glow Ring */
+.design-card::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg,
+            hsla(var(--hue-accent), 80%, 60%, 0.4) 0%,
+            transparent 40%,
+            transparent 60%,
+            hsla(280, 80%, 60%, 0.3) 100%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
+}
+
+.design-card:hover::after {
+    opacity: 1;
+}
+
+/* ===================
+   CARD CONTENT
+   =================== */
+
+.card-header {
+    margin-bottom: var(--space-2);
+}
+
+.card-title {
+    font-size: var(--font-size-h3);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-1);
+    transition: color var(--transition-fast), text-shadow var(--transition-fast);
+}
+
+.design-card:hover .card-title {
+    color: var(--color-accent);
+    text-shadow: 0 0 20px hsla(var(--hue-accent), 80%, 60%, 0.4);
+}
+
+.card-description {
+    font-size: var(--font-size-body);
+    color: hsla(0, 0%, 85%, 0.9);
+    line-height: var(--line-height-relaxed);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+/* Preview Label */
+.card-preview-label {
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-2);
+    padding: 0.25rem 0.625rem;
+    font-size: var(--font-size-tiny);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent);
+    background: hsla(var(--hue-accent), 80%, 60%, 0.15);
+    border: 1px solid hsla(var(--hue-accent), 80%, 60%, 0.3);
+    border-radius: var(--radius-sm);
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.design-card:hover .card-preview-label {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===================
+   TECH STACK BADGES
+   =================== */
+
+.card-footer {
+    margin-top: auto;
+    padding-top: var(--space-2);
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+}
+
+.tech-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.625rem;
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius-full);
+    background: hsla(0, 0%, 100%, 0.08);
+    color: var(--color-text-secondary);
+    transition: background var(--transition-fast);
+}
+
+.tech-badge--html {
+    color: var(--color-badge-html);
+    background: hsla(15, 80%, 55%, 0.15);
+}
+
+.tech-badge--css {
+    color: var(--color-badge-css);
+    background: hsla(200, 80%, 55%, 0.15);
+}
+
+.tech-badge--javascript,
+.tech-badge--js {
+    color: var(--color-badge-js);
+    background: hsla(50, 90%, 55%, 0.15);
+}
+
+/* ===================
+   FILTER BUTTONS
+   =================== */
+
+.filter-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 1.5rem;
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition:
+        color var(--transition-fast),
+        background var(--transition-fast),
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.filter-btn:hover {
+    color: var(--color-text-primary);
+    background: var(--color-bg-hover);
+    border-color: var(--color-border-hover);
+    transform: translateY(-2px);
+}
+
+.filter-btn[aria-pressed="true"],
+.filter-btn.is-active {
+    color: var(--color-accent);
+    background: hsla(var(--hue-accent), 80%, 60%, 0.12);
+    border-color: var(--color-border-accent);
+    box-shadow: 0 0 12px hsla(var(--hue-accent), 80%, 60%, 0.2);
+}
+
+/* ===================
+   CURSOR SPOTLIGHT
+   =================== */
+
+.cursor-spotlight {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: var(--z-spotlight);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    background: radial-gradient(circle,
+            hsla(var(--hue-accent), 80%, 60%, 0.08) 0%,
+            hsla(var(--hue-accent), 80%, 60%, 0.03) 30%,
+            transparent 70%);
+
+    /* Position via CSS custom properties */
+    transform: translate(calc(var(--mouse-x, -1000) * 1px - 50%),
+            calc(var(--mouse-y, -1000) * 1px - 50%));
+}
+
+.cursor-spotlight.is-active {
+    opacity: 1;
+}
+
+/* Hide on touch devices */
+@media (hover: none) {
+    .cursor-spotlight {
+        display: none;
+    }
+}
+
+/* ===================
+   NEON GLOW EFFECTS
+   =================== */
+
+.hero-title {
+    text-shadow:
+        0 0 20px hsla(var(--hue-accent), 100%, 70%, 0.6),
+        0 0 40px hsla(var(--hue-accent), 100%, 60%, 0.4),
+        0 0 80px hsla(var(--hue-accent), 100%, 50%, 0.2),
+        0 0 120px hsla(280, 100%, 60%, 0.15);
+}
+
+/* ===================
+   CARD LINK ARROW
+   =================== */
+
+.card-arrow {
+    position: absolute;
+    bottom: var(--space-3);
+    right: var(--space-3);
+    width: 28px;
+    height: 28px;
+    padding: 4px;
+    color: var(--color-text-muted);
+    background: hsla(var(--hue-accent), 80%, 60%, 0.1);
+    border-radius: var(--radius-sm);
+    opacity: 0;
+    transform: translateX(-8px);
+    transition:
+        opacity var(--transition-fast),
+        transform var(--transition-fast),
+        color var(--transition-fast),
+        background var(--transition-fast);
+}
+
+.design-card:hover .card-arrow {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--color-accent);
+    background: hsla(var(--hue-accent), 80%, 60%, 0.2);
+}
+
+/* ===================
+   NO RESULTS MESSAGE
+   =================== */
+
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--space-8) var(--space-4);
+    color: var(--color-text-muted);
+}
+
+.no-results-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-2);
+    opacity: 0.5;
+}
+
+.no-results-text {
+    font-size: var(--font-size-h3);
+}

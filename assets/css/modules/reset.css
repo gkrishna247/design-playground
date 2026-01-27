@@ -1,0 +1,189 @@
+/* ============================================
+   MODERN CSS RESET - reset.css
+   Box-sizing, accessibility, and base styles
+   ============================================ */
+
+/* ===================
+   BOX SIZING
+   =================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* ===================
+   REMOVE DEFAULTS
+   =================== */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* ===================
+   DOCUMENT
+   =================== */
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    min-height: 100vh;
+    line-height: var(--line-height-normal);
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-normal);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-deep);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+}
+
+/* ===================
+   TYPOGRAPHY
+   =================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: var(--line-height-tight);
+    font-weight: var(--font-weight-bold);
+    text-wrap: balance;
+}
+
+p {
+    max-width: 65ch;
+    text-wrap: pretty;
+}
+
+/* ===================
+   MEDIA ELEMENTS
+   =================== */
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===================
+   FORM ELEMENTS
+   =================== */
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* ===================
+   LISTS
+   =================== */
+
+ul,
+ol {
+    list-style: none;
+}
+
+/* ===================
+   LINKS
+   =================== */
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ===================
+   ACCESSIBILITY
+   =================== */
+
+/* Focus Visible - Modern accessible focus rings */
+:focus {
+    outline: none;
+}
+
+:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Screen Reader Only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ===================
+   SELECTION
+   =================== */
+
+::selection {
+    background-color: hsla(var(--hue-accent), 80%, 60%, 0.3);
+    color: var(--color-text-primary);
+}
+
+/* ===================
+   SCROLLBAR (WebKit)
+   =================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+    background: hsla(var(--hue-primary), 30%, 30%, 0.6);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: hsla(var(--hue-primary), 30%, 40%, 0.8);
+}
